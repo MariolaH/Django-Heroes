@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('current-datetime/', views.current_datetime, name='current-datetime'),
+    path('Hero/<int:hero_id>/', views.get_hero),
+    path('Hero/', views.get_hero),
 ]

@@ -1,8 +1,5 @@
 from django.db import models
 
-# class abilities(models.Model):
-# is a through table between abilityType and hero table
-
 class Hero(models.Model):
     name = models.CharField(max_length=200)
     about_me = models.TextField()
