@@ -7,8 +7,8 @@ class Hero(models.Model):
     abilitytype = models.ManyToManyField('AbilityType', through="Ability") 
 
 class Ability(models.Model):
-    heroes = models.ForeignKey('Hero', on_delete=models.PROTECT, null=True)
-    abilitytype = models.ForeignKey('AbilityType', on_delete=models.PROTECT, null=True)    
+    heroes = models.ForeignKey('Hero', on_delete=models.CASCADE, null=True, blank=True)
+    abilitytype = models.ForeignKey('AbilityType', on_delete=models.PROTECT, null=True, blank=True)    
 
 class AbilityType(models.Model):
     name = models.CharField(max_length=200)
