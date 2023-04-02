@@ -8,7 +8,9 @@ class Hero(models.Model):
 
 class Ability(models.Model):
     heroes = models.ForeignKey('Hero', on_delete=models.CASCADE, null=True, blank=True)
-    abilitytype = models.ForeignKey('AbilityType', on_delete=models.PROTECT, null=True, blank=True)    
+    abilitytype = models.ForeignKey('AbilityType', on_delete=models.PROTECT, null=True, blank=True)
+    def __str__(self):
+        return self.abilitytype;   
 
 class AbilityType(models.Model):
     name = models.CharField(max_length=200)

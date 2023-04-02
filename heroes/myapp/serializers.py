@@ -17,10 +17,6 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ['url', 'name']
 
-class HeroSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Hero
-        fields = ['id', 'name', 'about_me', 'biography', 'abilitytype'] 
 
 class AbilityTypeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,4 +26,11 @@ class AbilityTypeSerializer(serializers.ModelSerializer):
 class AbilitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Ability
-        fields = ['id', 'abilitytype_id', 'heroes_id']
+        # fields = ['id', 'abilitytype_id', 'heroes_id']
+        fields='__all__'
+
+class HeroSerializer(serializers.ModelSerializer):
+    abilitytype = AbilityTypeSerializer(required=False)
+    class Meta:
+        model = Hero
+        fields = ['id', 'name', 'about_me', 'biography', 'abilitytype']
