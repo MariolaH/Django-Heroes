@@ -25,13 +25,20 @@ class AbilityTypeSerializer(serializers.ModelSerializer):
         fields = ['name']
 
 class AbilitySerializer(serializers.ModelSerializer):
+    # ability = AbilitySerializer(many=True)
     class Meta:
         model = Ability
         # fields = ['id', 'abilitytype_id', 'heroes_id']
         fields='__all__'
 
+class RelationshipTypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RelationshipTypes
+        fields=['name']
+                
+
 class HeroSerializer(serializers.ModelSerializer):
-    # relationshipType = RelationshipTypesSerializer(many=True)
+    relationshiptype = RelationshipTypesSerializer(many=True)
     abilitytype = AbilityTypeSerializer(many=True)
     class Meta:
         model = Hero
@@ -42,8 +49,3 @@ class RelationshipSerializer(serializers.ModelSerializer):
         model = Relationship
         fields='__all__'
 
-class RelationshipTypesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RelationshipTypes
-        fields=['hero1', 'relationshiptype']
-        
