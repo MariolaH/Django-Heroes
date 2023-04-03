@@ -25,6 +25,8 @@ router.register(r'groups', views.GroupViewSet)
 router.register(r'hero', views.HeroViewSet)
 router.register(r'abilitytype', views.AbilityTypeViewSet)
 router.register(r'ability', views.AbilityViewSet)
+router.register(r'relationship', views.RelationshipViewSet)
+router.register(r'relationshiptype', views.RelationshipTypesViewSet)
 
 
 urlpatterns = [

@@ -3,7 +3,8 @@ from rest_framework import serializers
 from .models import Hero
 from .models import AbilityType
 from .models import Ability
-
+from .models import Relationship
+from .models import RelationshipTypes
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -21,7 +22,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class AbilityTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = AbilityType
-        fields = ['id', 'name']
+        fields = ['name']
 
 class AbilitySerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,7 +31,19 @@ class AbilitySerializer(serializers.ModelSerializer):
         fields='__all__'
 
 class HeroSerializer(serializers.ModelSerializer):
-    abilitytype = AbilityTypeSerializer(required=False)
+    # relationshipType = RelationshipTypesSerializer(many=True)
+    abilitytype = AbilityTypeSerializer(many=True)
     class Meta:
         model = Hero
-        fields = ['id', 'name', 'about_me', 'biography', 'abilitytype']
+        fields = ['id', 'name', 'about_me', 'biography', 'abilitytype', 'hero1', 'relationshiptype']
+
+class RelationshipSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Relationship
+        fields='__all__'
+
+class RelationshipTypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RelationshipTypes
+        fields=['hero1', 'relationshiptype']
+        

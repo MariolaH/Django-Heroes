@@ -4,11 +4,13 @@ import datetime
 from .models import Hero
 from .models import AbilityType
 from .models import Ability
+from .models import Relationship
+from .models import RelationshipTypes
 
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import UserSerializer, GroupSerializer, HeroSerializer, AbilityTypeSerializer, AbilitySerializer
+from .serializers import UserSerializer, GroupSerializer, HeroSerializer, AbilityTypeSerializer, AbilitySerializer, RelationshipSerializer, RelationshipTypesSerializer
 
 
 # UserViewSet is the model we want to steralizqe
@@ -39,6 +41,14 @@ class AbilityTypeViewSet(viewsets.ModelViewSet):
 class AbilityViewSet(viewsets.ModelViewSet):
     queryset = Ability.objects.all()
     serializer_class = AbilitySerializer
+
+class RelationshipViewSet(viewsets.ModelViewSet):
+    queryset = Relationship.objects.all()
+    serializer_class = RelationshipSerializer
+
+class RelationshipTypesViewSet(viewsets.ModelViewSet):
+    queryset = RelationshipTypes.objects.all()
+    serializer_class = RelationshipTypesSerializer
 
 def current_datetime(request):
     now = datetime.datetime.now()
