@@ -23,9 +23,9 @@ class RelationshipTypes(models.Model):
         return self.name
 
 class Relationship(models.Model):
-    hero1 = models.ForeignKey('Hero', on_delete=models.CASCADE, null= True, related_name='hero1', blank=True)
-    hero2 = models.ForeignKey('Hero', on_delete=models.CASCADE, null= True, related_name='hero2', blank=True)
-    relationshipType = models.ForeignKey('RelationshipTypes', on_delete=models.PROTECT, null=True, blank=True)
+    hero1 = models.ForeignKey('Hero', on_delete=models.CASCADE, null= False, related_name='hero1')
+    hero2 = models.ForeignKey('Hero', on_delete=models.CASCADE, null= False, related_name='hero2')
+    relationshipType = models.ForeignKey('RelationshipTypes', on_delete=models.PROTECT, null=True)
     
 
 
